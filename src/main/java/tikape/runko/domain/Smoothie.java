@@ -1,15 +1,18 @@
 package tikape.runko.domain;
 
-public class Opiskelija {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Smoothie {
 
     private Integer id;
     private String nimi;
-
-    public Opiskelija(Integer id, String nimi) {
+    
+    public Smoothie(Integer id, String nimi) {
         this.id = id;
         this.nimi = nimi;
     }
-
+    
     public Integer getId() {
         return id;
     }
