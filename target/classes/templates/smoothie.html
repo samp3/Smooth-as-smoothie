@@ -17,8 +17,32 @@
         
         <h1><span th:text="${smoothie.nimi}">Smoothie</span>!</h1>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <p><b>Raakaaineet</b></p>
+
+        <ol>
+            <li th:each="raakaaine : ${smoothie.raakaaineet}">
+                <a th:text="${raakaaine.nimi}"></a>
+                <a>,</a>
+                <a th:text="${raakaaine.maara}"></a>
+                <a>kpl,</a>
+                <a th:text="${raakaaine.ohje}"></a>
+            </li>
+        </ol>
+
+        <select name="raakaaineet">
+            <foreach collection="<%= raakaaineet %>" var="mybean">
+                <%= mybean.getOptionTag() %>
+            </foreach>
+        </select>
+=======
+>>>>>>> 02040d93669d3372fd2eaa786a777a7be875dd34
+        <p><b>Lisää raaka-aineita</b></p>
+=======
         <h2>Raakaaineet</h2>
 
+>>>>>>> e6f55ff2b701e498f42cf13e7c1fdde86fcfc382
         <ol>
             <li th:each="raakaaine : ${smoothie.raakaaineet}">
                 <a th:text="${raakaaine.nimi}"></a>
