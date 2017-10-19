@@ -10,11 +10,11 @@ package tikape.runko.domain;
  * @author okarki
  */
 public class Raakaaine {
-    
+
     private String nimi;
     private Integer id;
-    
-    public Raakaaine(String nimi, Integer id){
+
+    public Raakaaine(Integer id, String nimi) {
         this.nimi = nimi;
         this.id = id;
     }
@@ -34,5 +34,5 @@ public class Raakaaine {
     public void setId(Integer id) {
         this.id = id;
     }
-    
+
 }
