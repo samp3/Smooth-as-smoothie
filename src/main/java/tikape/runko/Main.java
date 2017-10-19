@@ -17,7 +17,7 @@ public class Main {
         database.init();
         
         SmoothieDao smoothieDao = new SmoothieDao(database);
-        RaakaaineDao raakaAineDao = new RaakaaineDao(database);
+        RaakaaineDao raakaaineDao = new RaakaaineDao(database);
 
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
@@ -43,7 +43,7 @@ public class Main {
             HashMap map = new HashMap<>();
             map.put("smoothie", smoothieDao.findOne(Integer.parseInt(req.params("id"))));
 
-            ((Smoothie) map.get("smoothie")).buildRaakaaineet(raakaAineDao);
+            ((Smoothie) map.get("smoothie")).buildRaakaaineet(raakaaineDao);
             
             return new ModelAndView(map, "smoothie");
         }, new ThymeleafTemplateEngine());
@@ -56,7 +56,7 @@ public class Main {
 
         Spark.post("/lisays_raakaaine", (req, res) -> {
             String nimi = req.queryParams("nimi");
-            smoothieDao.insert(nimi);
+            raakaaineDao.insert(nimi);
             res.redirect("/lisays_raakaaine");
             return "";
         });
