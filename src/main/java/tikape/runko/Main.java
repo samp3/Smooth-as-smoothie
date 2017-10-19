@@ -72,18 +72,20 @@ public class Main {
             return "";
         });
         
-        Spark.post("/remover/:poisto", (req, res) -> {
-            int poistetaan = Integer.parseInt(req.params("poisto"));  // tähän että monesko indeksi poistetaan
-            raakaaineDao.delete(poistetaan);
-            res.redirect("/lisays_raakaaine");
-            return "";
-        });
+        get("/lisays_raakaaine/:id", (req, res) -> {
+            HashMap map = new HashMap<>();
+            raakaaineDao.delete(Integer.parseInt(req.params("id")));
+            map.put("raakaaineet", raakaaineDao.findAll());
+            
+            return new ModelAndView(map, "lisays_raakaaine");
+        }, new ThymeleafTemplateEngine());
         
-        Spark.post("/removes/:poisto", (req, res) -> {
-            int poistetaan = Integer.parseInt(req.params("poisto"));  // tähän että monesko indeksi poistetaan
-            smoothieDao.delete(poistetaan);
-            res.redirect("/lisays");
-            return "";
+        Spark.post("/lisays/:id", (req, res) -> {
+            HashMap map = new HashMap<>();
+            smoothieDao.delete(Integer.parseInt(req.params("id")));
+            map.put("smoothiet", smoothieDao.findAll());
+
+            return new ModelAndView(map, "lisays");
         });
     }
 }

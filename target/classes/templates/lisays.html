@@ -4,7 +4,6 @@
     <head>
         <title>Smoothie Manageri</title>
         <meta charset="utf-8" />
-        <link rel ="stylesheet" type="text/css" href="tyylit.css" />
     </head>
 
     <body>
@@ -26,7 +25,7 @@
         <h2>Smoothiet</h2>
         <ol>
             <li th:each="smoothie : ${smoothiet}">
-                 <span th:text="${smoothie.nimi}"></span><a th:href="${'/removes/'+smoothie.id}"> [poista]</a>
+                 <span th:text="${smoothie.nimi}"></span><a th:href="${'/lisays/'+smoothie.id}"> [poista]</a>
             </li>
         </ol>
         
