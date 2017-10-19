@@ -56,17 +56,46 @@ public class Main {
             return new ModelAndView(map, "smoothie");
         }, new ThymeleafTemplateEngine());
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         Spark.post("/l_raakaainesmoothieen", (req, res) -> {
             String nimi = req.queryParams("nimi");
             String maara = req.queryParams("maara");
             String jarjestys = req.queryParams("jarjestys");
             String miten = req.queryParams("miten");
             
-            raakaaineDao.insert(nimi);
-            res.redirect("/lisays_raakaaine");
+            
             return "";
         });
        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
                 
         get("/lisays_raakaaine", (req, res) -> {
             HashMap map = new HashMap<>();
