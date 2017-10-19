@@ -13,6 +13,9 @@ import tikape.runko.domain.Smoothie;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        
+        staticFileLocation("/public");
+        
         Database database = new Database("jdbc:sqlite:smoothie_database.db");
         database.init();
         
@@ -47,6 +50,7 @@ public class Main {
             HashMap map = new HashMap<>();
             map.put("smoothie", smoothieDao.findOne(Integer.parseInt(req.params("id"))));
             map.put("raakaaineet", raakaaineDao.findAll());
+            
             ((Smoothie) map.get("smoothie")).buildRaakaaineet(raakaaineDao);
             
             return new ModelAndView(map, "smoothie");
