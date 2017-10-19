@@ -67,26 +67,34 @@ public class SmoothieDao implements Dao<Smoothie, Integer> {
         return smoothiet;
     }
     
-    private int getCount() throws SQLException{
+    private int getID() throws SQLException{
 
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT Count(*) FROM Annos");
         
         ResultSet rs = stmt.executeQuery();
         
-        int r = rs.getInt("Count(*)");
-        System.out.println(r);
+        int i_id = 0;
+        
+        while(rs.next()){
+            int c_id = rs.getInt("id");
+            if(c_id != i_id){
+                break;
+            }
+            i_id++;
+        }
+        
         
         rs.close();
         stmt.close();
         connection.close();
         
-        return r;
+        return i_id;
     }
 
     public void insert(String nimi) throws SQLException {
         
-        int id = this.getCount();
+        int id = this.getID();
         
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Annos (id, nimi) VALUES (?, ?)");

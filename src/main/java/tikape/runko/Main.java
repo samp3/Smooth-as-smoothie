@@ -94,8 +94,8 @@ public class Main {
             HashMap map = new HashMap<>();
             smoothieDao.delete(Integer.parseInt(req.params("id")));
             map.put("smoothiet", smoothieDao.findAll());
-
+            
             return new ModelAndView(map, "lisays");
-        });
+        }, new ThymeleafTemplateEngine());
     }
 }
