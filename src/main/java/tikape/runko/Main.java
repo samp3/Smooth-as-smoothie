@@ -103,6 +103,7 @@ public class Main {
         get("/lisays_raakaaine/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             raakaaineDao.delete(Integer.parseInt(req.params("id")));
+            annosraakaaineDao.deleteR(Integer.parseInt(req.params("id")));
             map.put("raakaaineet", raakaaineDao.findAll());
             
             return new ModelAndView(map, "lisays_raakaaine");
@@ -111,6 +112,7 @@ public class Main {
         get("/lisays/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             smoothieDao.delete(Integer.parseInt(req.params("id")));
+            annosraakaaineDao.deleteS(Integer.parseInt(req.params("id")));
             map.put("smoothiet", smoothieDao.findAll());
             
             return new ModelAndView(map, "lisays");
