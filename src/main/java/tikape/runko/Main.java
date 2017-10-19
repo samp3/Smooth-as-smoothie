@@ -15,8 +15,6 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         
-        staticFileLocation("/public");
-        
         Database database = new Database("jdbc:sqlite:smoothie_database.db");
         database.init();
         

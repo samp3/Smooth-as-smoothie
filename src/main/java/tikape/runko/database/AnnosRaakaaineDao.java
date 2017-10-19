@@ -21,9 +21,6 @@ public class AnnosRaakaaineDao implements Dao<Raakaaine, Integer> {
 
     public void insert(int r_id, int a_id, int j, int m, String o) throws SQLException {
         
-        //AnnosRaakaAine 
-        //raakaAine_id INTEGER, annos_id INTEGER, jarjestys INTEGER, maara INTEGER, ohje TEXT
-        
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO AnnosRaakaAine (raakaAine_id, annos_id, jarjestys, maara, ohje) VALUES (?, ?, ?, ?, ?)");
         stmt.setInt(1, r_id);
