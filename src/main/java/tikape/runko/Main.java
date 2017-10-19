@@ -48,6 +48,8 @@ public class Main {
             HashMap map = new HashMap<>();
             map.put("smoothie", smoothieDao.findOne(Integer.parseInt(req.params("id"))));
             map.put("raakaaineet", raakaaineDao.findAll());
+            map.put("categories", raakaaineDao.findAll());
+            map.put("template", "templates/index.vtl");
             
             ((Smoothie) map.get("smoothie")).buildRaakaaineet(raakaaineDao);
             
