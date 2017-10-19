@@ -30,12 +30,12 @@
             <fieldset>
                 <legend>Lisää raakaaineita</legend>
                 <label>Valitse Smoothie: </label>
-                <select>
-                    <option th:each="smoothie: ${smoothiet}" th:text="${smoothie.nimi}" name="annos"></option>
+                <select name="annos">
+                    <option th:each="smoothie: ${smoothiet}" th:text="${smoothie.nimi }" th:name="annos"></option>
                 </select><br/>
                 <label>Valitse Raakaaine: </label>
-                <select>
-                    <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}" name="raakaaine"></option>
+                <select name="raakaaine">
+                    <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}" th:name="raakaaine"></option>
                 </select><br/>
                 <label>Määrä: </label>
                 <input type="text" name="maara"/><br/>

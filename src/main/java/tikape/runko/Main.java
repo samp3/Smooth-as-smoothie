@@ -61,11 +61,25 @@ public class Main {
         
         Spark.post("/l_raakaainesmoothieen", (req, res) -> { // raakaainesmoothieen
             int r_id = raakaaineDao.findID(req.queryParams("raakaaine"));
-            int s_id = raakaaineDao.findID(req.queryParams("annos"));
-            int maara = Integer.parseInt(req.queryParams("maara"));
-            int jarjestys = Integer.parseInt(req.queryParams("jarjestys"));
-            String nimi = req.queryParams("nimi");
+            int s_id = smoothieDao.findID(req.queryParams("annos"));
+            
+            String temp = "";
+            temp = req.queryParams("maara");
+            if(temp.equals("")){
+                temp = "1";
+            }
+            
+            int maara = Integer.parseInt(temp);
+            
+            temp = req.queryParams("jarjestys");
+            if(temp.equals("")){
+                temp = "1";
+            }
+            
+            int jarjestys = Integer.parseInt(temp);
             String miten = req.queryParams("miten");
+            
+            annosraakaaineDao.insert(r_id, s_id, jarjestys, maara, miten);
             
             res.redirect("/lisays");
             
