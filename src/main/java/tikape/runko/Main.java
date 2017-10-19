@@ -5,6 +5,7 @@ import spark.ModelAndView;
 import spark.Spark;
 import static spark.Spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
+import tikape.runko.database.AnnosRaakaaineDao;
 import tikape.runko.database.Database;
 import tikape.runko.database.RaakaaineDao;
 import tikape.runko.database.SmoothieDao;
@@ -21,6 +22,7 @@ public class Main {
         
         SmoothieDao smoothieDao = new SmoothieDao(database);
         RaakaaineDao raakaaineDao = new RaakaaineDao(database);
+        AnnosRaakaaineDao annosraakaaineDao = new AnnosRaakaaineDao(database);
         
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
@@ -33,6 +35,7 @@ public class Main {
         get("/lisays", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("smoothiet", smoothieDao.findAll());
+            map.put("raakaaineet", raakaaineDao.findAll());
 
             return new ModelAndView(map, "lisays");
         }, new ThymeleafTemplateEngine());
@@ -48,7 +51,6 @@ public class Main {
             HashMap map = new HashMap<>();
             map.put("smoothie", smoothieDao.findOne(Integer.parseInt(req.params("id"))));
             map.put("raakaaineet", raakaaineDao.findAll());
-            map.put("categories", raakaaineDao.findAll());
             map.put("template", "templates/index.vtl");
             
             ((Smoothie) map.get("smoothie")).buildRaakaaineet(raakaaineDao);
@@ -57,46 +59,19 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        Spark.post("/l_raakaainesmoothieen", (req, res) -> {
+        Spark.post("/l_raakaainesmoothieen", (req, res) -> { // raakaainesmoothieen
+            int r_id = raakaaineDao.findID(req.queryParams("raakaaine"));
+            int s_id = raakaaineDao.findID(req.queryParams("annos"));
+            int maara = Integer.parseInt(req.queryParams("maara"));
+            int jarjestys = Integer.parseInt(req.queryParams("jarjestys"));
             String nimi = req.queryParams("nimi");
-            String maara = req.queryParams("maara");
-            String jarjestys = req.queryParams("jarjestys");
             String miten = req.queryParams("miten");
             
+            res.redirect("/lisays");
             
             return "";
         });
-       
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                
         get("/lisays_raakaaine", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("raakaaineet", raakaaineDao.findAll());

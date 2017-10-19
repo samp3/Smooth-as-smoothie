@@ -24,6 +24,29 @@
             <input type="submit" value="Lisää smoothie"/>
         </form>
         
+        <br/>
+        
+        <form method="POST" action="/l_raakaainesmoothieen">
+            <fieldset>
+                <legend>Lisää raakaaineita</legend>
+                <label>Valitse Smoothie: </label>
+                <select>
+                    <option th:each="smoothie: ${smoothiet}" th:text="${smoothie.nimi}" name="annos"></option>
+                </select><br/>
+                <label>Valitse Raakaaine: </label>
+                <select>
+                    <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}" name="raakaaine"></option>
+                </select><br/>
+                <label>Määrä: </label>
+                <input type="text" name="maara"/><br/>
+                <label>Miten: </label>
+                <input type="text" name="miten"/><br/>
+                <label>Järjestys: </label>
+                <input type="text" name="jarjestys"/><br/>
+                <input type="submit" value="Lisää raaka-aine"/>
+            </fieldset>
+        </form>
+        
         <h2>Smoothiet</h2>
         <ol>
             <li th:each="smoothie : ${smoothiet}">

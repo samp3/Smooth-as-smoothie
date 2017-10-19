@@ -18,7 +18,7 @@ public class RaakaaineDao implements Dao<Raakaaine, Integer> {
     public RaakaaineDao(Database database) {
         this.database = database;
     }
-
+    
     @Override
     public Raakaaine findOne(Integer key) throws SQLException {
         Connection connection = database.getConnection();
@@ -88,20 +88,56 @@ public class RaakaaineDao implements Dao<Raakaaine, Integer> {
         
         return i_id;
     }
+    public int findID(String nimi) throws SQLException{
 
-    public void insert(String nimi) throws SQLException {
-        
-        int id = this.getID();
-        
         Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Raakaaine (id, nimi) VALUES (?, ?)");
-        stmt.setInt(1, id);
-        stmt.setString(2, nimi);
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Raakaaine WHERE nimi = ?");
+        stmt.setString(1, nimi);
+        ResultSet rs = stmt.executeQuery();
         
-        stmt.execute();
+        int r = 0;
         
+        if(rs.next()){
+            r = rs.getInt("id");
+        } else {
+            r = -1;
+        }
+        
+        rs.close();
         stmt.close();
         connection.close();
+        
+        return r;
+    }
+    public void insert(String nimi) throws SQLException {
+        
+        Connection connection = database.getConnection();
+        PreparedStatement stm = connection.prepareStatement("SELECT Count(*) FROM Raakaaine WHERE nimi = ?");
+        stm.setString(1, nimi);
+        
+        stm.execute();
+        
+        ResultSet rs = stm.executeQuery();
+        
+        if(rs.getInt("Count(*)") > 0){
+            stm.close();
+            rs.close();
+            connection.close();
+        } else {
+            rs.close();
+            stm.close();
+            
+            int id = this.getID();
+            
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Raakaaine (id, nimi) VALUES (?, ?)");
+            stmt.setInt(1, id);
+            stmt.setString(2, nimi);
+
+            stmt.execute();
+
+            stmt.close();
+            connection.close();
+        }
         
     }
     

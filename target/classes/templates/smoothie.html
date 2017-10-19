@@ -17,8 +17,6 @@
 
         <h1><span th:text="${smoothie.nimi}">Smoothie</span>!</h1>
 
-
-
         <h2>Raakaaineet</h2>
 
         <ol>
@@ -30,22 +28,6 @@
                 <a th:text="${raakaaine.ohje}"></a>
             </li>
         </ol>
-
-        <h3>Lisää raakaaineita</h3>
-        <form method="POST" action="/l_raakaainesmoothieen">
-            <label>Valitse raakaaine: </label>
-            <select>
-                <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}"></option>
-            </select>
-
-            <label>Määrä: </label>
-            <input type="text" name="maara"/>
-            <label>Miten: </label>
-            <input type="text" name="miten"/>
-            <label>Järjestys: </label>
-            <input type="text" name="jarjestys"/><br/>
-            <input type="submit" value="Lisää raaka-aine"/>
-        </form>
 
     </body>
 </html>

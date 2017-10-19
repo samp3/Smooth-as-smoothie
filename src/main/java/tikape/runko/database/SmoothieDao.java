@@ -67,10 +67,32 @@ public class SmoothieDao implements Dao<Smoothie, Integer> {
         return smoothiet;
     }
     
+    public int findID(String nimi) throws SQLException{
+
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Annos WHERE nimi = ?");
+        stmt.setString(1, nimi);
+        ResultSet rs = stmt.executeQuery();
+        
+        int r = 0;
+        
+        if(rs.next()){
+            r = rs.getInt("id");
+        } else {
+            r = -1;
+        }
+        
+        rs.close();
+        stmt.close();
+        connection.close();
+        
+        return r;
+    }
+    
     private int getID() throws SQLException{
 
         Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("SELECT Count(*) FROM Annos");
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Annos");
         
         ResultSet rs = stmt.executeQuery();
         
@@ -94,18 +116,32 @@ public class SmoothieDao implements Dao<Smoothie, Integer> {
 
     public void insert(String nimi) throws SQLException {
         
-        int id = this.getID();
-        
         Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Annos (id, nimi) VALUES (?, ?)");
-        stmt.setInt(1, id);
-        stmt.setString(2, nimi);
+        PreparedStatement stm = connection.prepareStatement("SELECT Count(*) FROM Annos WHERE nimi = ?");
+        stm.setString(1, nimi);
         
-        stmt.execute();
+        stm.execute();
         
-        stmt.close();
-        connection.close();
+        ResultSet rs = stm.executeQuery();
         
+        if(rs.getInt("Count(*)") > 0){
+            stm.close();
+            rs.close();
+            connection.close();
+        } else {
+            rs.close();
+            stm.close();
+            int id = this.getID();
+
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Annos (id, nimi) VALUES (?, ?)");
+            stmt.setInt(1, id);
+            stmt.setString(2, nimi);
+
+            stmt.execute();
+
+            stmt.close();
+            connection.close();
+        }
     }
 
     @Override
