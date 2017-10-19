@@ -8,14 +8,27 @@
 
     <body>
         <h1>Lisää smoothie</h1>
-        
+
+        <form>
+            <p>Valitse raaka-aineet</p>
+            <select>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+            
+            <input type="submit" value="Lisää raaka-aine smoothieen"/>
+        </form>
+
+
         <form method="POST" action="/l_smoothie">
             Nimi:<br/>
             <input type="text" name="nimi"/><br/>
             <input type="submit" value="Lisää smoothie"/>
         </form>
-        
+
     </body>
-    
-    
+
+
 </html>
