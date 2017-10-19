@@ -7,6 +7,13 @@
     </head>
 
     <body>
+        
+        <nav class="nlink">
+            <a class="index" href="/"> Etusivu</a>
+            <a class="lisays" href="/lisays"> Smoothie Manageri</a>
+            <a class="raakaaine" href="/lisays_raakaaine"> Raakaaine Manageri</a>
+        </nav>
+        
         <h1>Lisää smoothie</h1>
 
 
@@ -22,8 +29,6 @@
                  <span th:text="${smoothie.nimi}"></span><a th:href="${'/removes/'+smoothie.id}"> [poista]</a>
             </li>
         </ol>
-        
-        <p><a href="/">Etusivulle</a></p>
         
 
     </body>
