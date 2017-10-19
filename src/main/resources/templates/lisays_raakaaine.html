@@ -18,7 +18,7 @@
         <h2>Raakaaineet</h2>
         <ol>
             <li th:each="raakaaine : ${raakaaineet}">
-                 <a><span th:text="${raakaaine.nimi}"></span></a>
+                 <span th:text="${raakaaine.nimi}"></span><a th:href="${'/remover/'+raakaaine.id}"> [poista]</a>
             </li>
         </ol>
         

@@ -19,11 +19,9 @@
         <h2>Smoothiet</h2>
         <ol>
             <li th:each="smoothie : ${smoothiet}">
-                 <span th:text="${smoothie.nimi}"></span><a th:href="${'/remove/'+smoothie.id}">[poista]</a>
+                 <span th:text="${smoothie.nimi}"></span><a th:href="${'/removes/'+smoothie.id}"> [poista]</a>
             </li>
         </ol>
-
-
         
         <p><a href="/">Etusivulle</a></p>
         
