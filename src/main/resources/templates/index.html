@@ -10,14 +10,15 @@
         <h1>Smooth as Smoothie</h1>
         
         <p><a href="/lisays">Siirry smoothie lisäykseen.</a></p>
+        <p><a href="/lisays_raakaaine">Lisää ja tarkastele raaka-aineita.</a></p>
+        
+        <h2>Smoothie lista</h2>
         
         <ol>
             <li th:each="smoothie : ${smoothiet}">
-                <span th:text="${smoothie.nimi}">opiskelijan nimi</span> <a th:href="${'/smoothie/'+smoothie.id}">linkki</a>
+                <a th:href="${'/smoothie/'+smoothie.id}"><span th:text="${smoothie.nimi}">opiskelijan nimi</span></a>
             </li>
         </ol>
-        
-        <p><a href="/lisays_raakaaine">Lisää ja tarkastele raaka-aineita.</a></p>
         
     </body>
 </html>
