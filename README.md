@@ -1,4 +1,5 @@
-# tikape-runko
+﻿Smooth as smoothie
 
-Tietokantojen perusteet -kurssilla tehtävän web-sovelluksen pohja.
-
+Samuli Ahlqvist - 013710109
+Olli Kärki -
+Valtteri Nyman -
