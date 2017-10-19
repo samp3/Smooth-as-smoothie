@@ -6,8 +6,9 @@ import spark.Spark;
 import static spark.Spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import tikape.runko.database.Database;
-import tikape.runko.database.SmoothieDao;
 import tikape.runko.database.RaakaaineDao;
+import tikape.runko.database.SmoothieDao;
+import tikape.runko.domain.Smoothie;
 
 public class Main {
 
@@ -42,6 +43,8 @@ public class Main {
             HashMap map = new HashMap<>();
             map.put("smoothie", smoothieDao.findOne(Integer.parseInt(req.params("id"))));
 
+            ((Smoothie) map.get("smoothie")).buildRaakaaineet(raakaaineDao);
+            
             return new ModelAndView(map, "smoothie");
         }, new ThymeleafTemplateEngine());
                 

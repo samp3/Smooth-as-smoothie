@@ -41,7 +41,7 @@ public class Database {
         // tietokantataulujen luomiseen tarvittavat komennot suoritusjärjestyksessä
         lista.add("CREATE TABLE Annos (id integer PRIMARY KEY, nimi text);");
         lista.add("CREATE TABLE RaakaAine (id integer PRIMARY KEY, nimi text);");
-        lista.add("CREATE TABLE AnnosRaakaAiane (raakaAiane_id INTEGER, annos_id INTEGER, jarjestys INTEGER, maara INTEGER, ohje TEXT, FOREIGN KEY (raakaAine_id) References RaakaAine(id), FOREIGN KEY (annos_id) REFERENCES Annos(id));");
+        lista.add("CREATE TABLE AnnosRaakaAine (raakaAine_id INTEGER, annos_id INTEGER, jarjestys INTEGER, maara INTEGER, ohje TEXT, FOREIGN KEY (raakaAine_id) References RaakaAine(id), FOREIGN KEY (annos_id) REFERENCES Annos(id));");
 
         return lista;
     }

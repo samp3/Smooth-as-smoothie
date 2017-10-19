@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import tikape.runko.domain.Raakaaine;
+import tikape.runko.domain.Smoothie;
 
 public class RaakaaineDao implements Dao<Raakaaine, Integer> {
 
@@ -92,6 +93,28 @@ public class RaakaaineDao implements Dao<Raakaaine, Integer> {
         
         stmt.close();
         connection.close();
+        
+    }
+    
+    public void build(Smoothie smoothie) throws SQLException{
+
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Raakaaine Left Join AnnosRaakaaine ON Raakaaine.id = AnnosRaakaaine.raakaAine_id WHERE AnnosRaakaaine.annos_id ="+smoothie.getId());
+
+        ResultSet rs = stmt.executeQuery();
+        List<Raakaaine> raakaaineet = new ArrayList<>();
+        while (rs.next()) {
+            Integer id = rs.getInt("id");
+            String nimi = rs.getString("nimi");
+
+            raakaaineet.add(new Raakaaine(id, nimi));
+        }
+
+        rs.close();
+        stmt.close();
+        connection.close();
+        
+        smoothie.setRaakaaineet(raakaaineet);
         
     }
 
