@@ -51,6 +51,8 @@ public class Main {
             
             return new ModelAndView(map, "smoothie");
         }, new ThymeleafTemplateEngine());
+        
+       
                 
         get("/lisays_raakaaine", (req, res) -> {
             HashMap map = new HashMap<>();

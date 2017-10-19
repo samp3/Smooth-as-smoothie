@@ -10,7 +10,7 @@
         <h1><span th:text="${smoothie.nimi}">Smoothie</span>!</h1>
 
         <p><b>Raakaaineet</b></p>
-        
+
         <ol>
             <li th:each="raakaaine : ${smoothie.raakaaineet}">
                 <a th:text="${raakaaine.nimi}"></a>
@@ -20,9 +20,22 @@
                 <a th:text="${raakaaine.ohje}"></a>
             </li>
         </ol>
-        
-        
+
+        <p><b>Lisää raaka-aineita</b></p>
+        <ol>
+            <li th:each="raakaaine : ${raakaaineet}">
+                <span th:text="${raakaaine.nimi}"></span>
+                <form method="POST" action="/l_raakaaine">
+                    Määrä: <br/>
+                    <input type="text" name="maara"/><br/>
+                    Miten: <br/>
+                    <input type="text" name="miten"/><br/>
+                    <input type="submit" value="Lisää raaka-aine"/>
+                </form>
+            </li>
+        </ol>
+
         <p><a href="/">Etusivulle</a></p>
-        
+
     </body>
 </html>
