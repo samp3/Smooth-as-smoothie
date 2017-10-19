@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import tikape.runko.domain.Raakaaine;
 import tikape.runko.domain.Smoothie;
@@ -106,13 +108,22 @@ public class RaakaaineDao implements Dao<Raakaaine, Integer> {
         while (rs.next()) {
             Integer id = rs.getInt("id");
             String nimi = rs.getString("nimi");
-
-            raakaaineet.add(new Raakaaine(id, nimi));
+            int jarjestys = rs.getInt("jarjestys");
+            int maara = rs.getInt("maara");
+            String ohje = rs.getString("ohje");
+            raakaaineet.add(new Raakaaine(id, nimi, jarjestys, maara, ohje));
         }
 
         rs.close();
         stmt.close();
         connection.close();
+        
+        Collections.sort(raakaaineet, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return ((Raakaaine)o1).getJarjestys().compareTo(((Raakaaine)o2).getJarjestys());
+            }
+        });
         
         smoothie.setRaakaaineet(raakaaineet);
         
