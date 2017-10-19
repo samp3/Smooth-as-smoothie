@@ -19,10 +19,12 @@ public class Main {
         SmoothieDao smoothieDao = new SmoothieDao(database);
         RaakaaineDao raakaaineDao = new RaakaaineDao(database);
 
+        staticFileLocation("/public");
+        
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("smoothiet", smoothieDao.findAll());
-
+            
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
 
