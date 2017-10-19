@@ -35,5 +35,20 @@ public class Main {
             res.redirect("/lisays");
             return "";
         });
+        
+                
+        get("/lisays_raakaaine", (req, res) -> {
+            HashMap map = new HashMap<>();
+
+            return new ModelAndView(map, "lisays_raakaaine");
+        }, new ThymeleafTemplateEngine());
+
+        Spark.post("/lisays_raakaaine", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            smoothieDao.insert(nimi);
+            res.redirect("/lisays_raakaaine");
+            return "";
+        });
+        
     }
 }
