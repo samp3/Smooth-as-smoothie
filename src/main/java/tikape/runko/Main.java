@@ -30,8 +30,6 @@ public class Main {
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
         
-
-
         get("/lisays", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("smoothiet", smoothieDao.findAll());
@@ -55,6 +53,8 @@ public class Main {
             
             return new ModelAndView(map, "smoothie");
         }, new ThymeleafTemplateEngine());
+        
+       
                 
         get("/lisays_raakaaine", (req, res) -> {
             HashMap map = new HashMap<>();
