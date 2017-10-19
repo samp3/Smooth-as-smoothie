@@ -13,7 +13,7 @@
         
         <ol>
             <li th:each="smoothie : ${smoothiet}">
-                <b><span th:text="${smoothie.nimi}">Smoothien nimi</span></b>
+                <span th:text="${smoothie.nimi}">opiskelijan nimi</span> <a th:href="${'/smoothie/'+smoothie.id}">linkki</a>
             </li>
         </ol>
         

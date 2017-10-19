@@ -35,5 +35,12 @@ public class Main {
             res.redirect("/lisays");
             return "";
         });
+        
+        get("/smoothie/:id", (req, res) -> {
+            HashMap map = new HashMap<>();
+            map.put("smoothie", smoothieDao.findOne(Integer.parseInt(req.params("id"))));
+
+            return new ModelAndView(map, "smoothie");
+        }, new ThymeleafTemplateEngine());
     }
 }
