@@ -56,6 +56,16 @@ public class Main {
             return new ModelAndView(map, "smoothie");
         }, new ThymeleafTemplateEngine());
         
+        Spark.post("/l_raakaainesmoothieen", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            String maara = req.queryParams("maara");
+            String jarjestys = req.queryParams("jarjestys");
+            String miten = req.queryParams("miten");
+            
+            raakaaineDao.insert(nimi);
+            res.redirect("/lisays_raakaaine");
+            return "";
+        });
        
                 
         get("/lisays_raakaaine", (req, res) -> {
@@ -80,7 +90,7 @@ public class Main {
             return new ModelAndView(map, "lisays_raakaaine");
         }, new ThymeleafTemplateEngine());
         
-        Spark.post("/lisays/:id", (req, res) -> {
+        get("/lisays/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             smoothieDao.delete(Integer.parseInt(req.params("id")));
             map.put("smoothiet", smoothieDao.findAll());

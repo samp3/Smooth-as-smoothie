@@ -8,30 +8,16 @@
     </head>
 
     <body>
-        
+
         <nav class="nlink">
             <a class="index" href="/"> Etusivu</a>
             <a class="lisays" href="/lisays"> Smoothie Manageri</a>
             <a class="raakaaine" href="/lisays_raakaaine"> Raakaaine Manageri</a>
         </nav>
-        
+
         <h1><span th:text="${smoothie.nimi}">Smoothie</span>!</h1>
 
 
-        <p><b>Raakaaineet</b></p>
-
-        <ol>
-            <li th:each="raakaaine : ${smoothie.raakaaineet}">
-                <a th:text="${raakaaine.nimi}"></a>
-                <a>,</a>
-                <a th:text="${raakaaine.maara}"></a>
-                <a>kpl,</a>
-                <a th:text="${raakaaine.ohje}"></a>
-            </li>
-        </ol>
-
-
-        <p><b>Lisää raaka-aineita</b></p>
 
         <h2>Raakaaineet</h2>
 
@@ -46,10 +32,26 @@
         </ol>
 
         <h3>Lisää raakaaineita</h3>
-        <label>Valitse raakaaine: </label>
-        <select>
-            <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}"></option>
-        </select>
+        <form method="POST" action="/l_raakaainesmoothieen">
+            <label>Valitse raakaaine: </label>
+            <select>
+                <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}"></option>
+            </select>
+
+            <p>Määrä: </p>
+            <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <p>Miten: </p>
+            <input type="text" name="miten"/><br/>
+            <p>Järjestys: </p>
+            <input type="text" name="jarjestys"/><br/>
+            <input type="submit" value="Lisää raaka-aine"/>
+        </form>
 
     </body>
 </html>
