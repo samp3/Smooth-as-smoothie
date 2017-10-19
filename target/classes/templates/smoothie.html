@@ -5,7 +5,6 @@
     <head>
         <title>Smoothie</title>
         <meta charset="utf-8" />
-        <link rel ="stylesheet" type="text/css" href="tyylit.css" />
     </head>
 
     <body>
@@ -18,6 +17,7 @@
         
         <h1><span th:text="${smoothie.nimi}">Smoothie</span>!</h1>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         <p><b>Raakaaineet</b></p>
 
@@ -39,18 +39,27 @@
 =======
 >>>>>>> 02040d93669d3372fd2eaa786a777a7be875dd34
         <p><b>Lisää raaka-aineita</b></p>
+=======
+        <h2>Raakaaineet</h2>
+
+>>>>>>> e6f55ff2b701e498f42cf13e7c1fdde86fcfc382
         <ol>
-            <li th:each="raakaaine : ${raakaaineet}">
-                <span th:text="${raakaaine.nimi}"></span>
-                <form method="POST" action="/l_raakaaine">
-                    Määrä: <br/>
-                    <input type="text" name="maara"/><br/>
-                    Miten: <br/>
-                    <input type="text" name="miten"/><br/>
-                    <input type="submit" value="Lisää raaka-aine"/>
-                </form>
+            <li th:each="raakaaine : ${smoothie.raakaaineet}">
+                <a th:text="${raakaaine.nimi}"></a>
+                <a>,</a>
+                <a th:text="${raakaaine.maara}"></a>
+                <a>kpl,</a>
+                <a th:text="${raakaaine.ohje}"></a>
             </li>
         </ol>
+
+        <h3>Lisää raakaaineita</h3>
+        <label>Valitse raakaaine: </label>
+        <select>
+            <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}"></option>
+        </select>
+        
+        <p><a href="/">Etusivulle</a></p>
 
     </body>
 </html>
