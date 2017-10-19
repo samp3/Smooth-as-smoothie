@@ -74,7 +74,8 @@ public class SmoothieDao implements Dao<Smoothie, Integer> {
         
         ResultSet rs = stmt.executeQuery();
         
-        int r = rs.getInt("Count");
+        int r = rs.getInt("Count(*)");
+        System.out.println(r);
         
         rs.close();
         stmt.close();
