@@ -1,5 +1,7 @@
 ﻿Smooth as smoothie
 
+Olli Kärki - 014807723
+
 Samuli Ahlqvist - 013710109
-Olli Kärki -
-Valtteri Nyman -
+
+Valtteri Nyman - 014024315
