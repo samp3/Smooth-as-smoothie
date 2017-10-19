@@ -18,8 +18,6 @@ public class Main {
         
         SmoothieDao smoothieDao = new SmoothieDao(database);
         RaakaaineDao raakaaineDao = new RaakaaineDao(database);
-
-        staticFileLocation("/public");
         
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();

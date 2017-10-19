@@ -31,7 +31,7 @@
         <h2>Smoothiet</h2>
         <ol>
             <li th:each="smoothie : ${smoothiet}">
-                 <a th:href="${'/smoothie/'+smoothie.id}"><span th:text="${smoothie.nimi}"></span></a>
+                 <span th:text="${smoothie.nimi}"></span><a th:href="${'/remove/'+smoothie.id}">[poista]</a>
             </li>
         </ol>
 
