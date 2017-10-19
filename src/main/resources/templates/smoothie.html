@@ -21,6 +21,11 @@
             </li>
         </ol>
 
+        <select name="raakaaineet">
+            <foreach collection="<%= raakaaineet %>" var="mybean">
+                <%= mybean.getOptionTag() %>
+            </foreach>
+        </select>
         <p><b>Lisää raaka-aineita</b></p>
         <ol>
             <li th:each="raakaaine : ${raakaaineet}">
