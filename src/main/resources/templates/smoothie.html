@@ -9,7 +9,17 @@
     <body>
         <h1><span th:text="${smoothie.nimi}">Smoothie</span>!</h1>
 
-        <p>Raakaaineet</p>
+        <p><b>Raakaaineet</b></p>
+        
+        <ol>
+            <li th:each="raakaaine : ${smoothie.raakaaineet}">
+                <a th:text="${raakaaine.nimi}"></a>
+                <a>,</a>
+                <a th:text="${raakaaine.maara}"></a>
+                <a>kpl,</a>
+                <a th:text="${raakaaine.ohje}"></a>
+            </li>
+        </ol>
         
     </body>
 </html>
