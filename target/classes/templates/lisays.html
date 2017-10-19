@@ -2,48 +2,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Smoothie Manageri</title>
-        <meta charset="ISO-8859-1" />
+        <title>Smoothie manager</title>
+        <meta charset="UTF-8" />
     </head>
 
     <body>
         
         <nav>
-            <a href="/"> Etusivu</a>
-            <a href="/lisays"> Smoothie Manageri</a>
-            <a href="/lisays_raakaaine"> Raakaaine Manageri</a>
+            <a href="/"> Frontpage</a>
+            <a href="/lisays"> Smoothie manager</a>
+            <a href="/lisays_raakaaine"> Ingredient manager</a>
         </nav>
         
         <h1>Smoothie Manager</h1>
 
-        <p>Lisää ja poista smoothieita</p>
+        <p>Add and delete smoothies</p>
         
         <form method="POST" action="/l_smoothie">
-            Nimi:<br/>
+            name:<br/>
             <input type="text" name="nimi"/><br/>
-            <input type="submit" value="Lisää smoothie"/>
+            <input type="submit" value="Add smoothie"/>
         </form>
         
         <br/>
         
         <form method="POST" action="/l_raakaainesmoothieen">
             <fieldset>
-                <legend>Lisää raakaaineita</legend>
-                <label>Valitse Smoothie: </label>
+                <legend>Add ingredients</legend>
+                <label>Choose Smoothie: </label>
                 <select name="annos">
                     <option th:each="smoothie: ${smoothiet}" th:text="${smoothie.nimi }" th:name="annos"></option>
                 </select><br/>
-                <label>Valitse Raakaaine: </label>
+                <label>Choose ingredient: </label>
                 <select name="raakaaine">
                     <option th:each="raakaaine: ${raakaaineet}" th:text="${raakaaine.nimi}" th:name="raakaaine"></option>
                 </select><br/>
-                <label>Määrä: </label>
+                <label>How many: </label>
                 <input type="text" name="maara"/><br/>
-                <label>Miten: </label>
+                <label>How: </label>
                 <input type="text" name="miten"/><br/>
-                <label>Järjestys: </label>
+                <label>Order: </label>
                 <input type="text" name="jarjestys"/><br/>
-                <input type="submit" value="Lisää raaka-aine"/>
+                <input type="submit" value="Add ingredient"/>
             </fieldset>
         </form>
         

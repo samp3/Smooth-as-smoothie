@@ -2,32 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Raakaaine Manageri</title>
-        <meta charset="ISO-8859-1" />
+        <title>Ingredient Manager</title>
+        <meta charset="UTF-8" />
     </head>
 
     <body>
         
         <nav>
-            <a href="/"> Etusivu</a>
-            <a href="/lisays"> Smoothie Manageri</a>
-            <a href="/lisays_raakaaine"> Raakaaine Manageri</a>
+            <a href="/"> Frontpage</a>
+            <a href="/lisays"> Smoothie manager</a>
+            <a href="/lisays_raakaaine"> Ingredient manager</a>
         </nav>
         
-        <h1>Raakaaine Manager</h1>
+        <h1>Ingredient Manager</h1>
         
-        <p>Lisää ja poista raakaaineita</p>
+        <p>Add and delete ingredients</p>
         
         <form method="POST" action="/l_raakaaine">
-            Nimi:<br/>
+            Name:<br/>
             <input type="text" name="nimi"/><br/>
-            <input type="submit" value="Lisää raaka-aine"/>
+            <input type="submit" value="add ingredient"/>
         </form>
         
-        <h2>Raakaaineet</h2>
+        <h2>Ingredients</h2>
         <ol>
             <li th:each="raakaaine : ${raakaaineet}">
-                 <span th:text="${raakaaine.nimi}"></span><a th:href="${'/lisays_raakaaine/'+raakaaine.id}"> [poista]</a>
+                 <span th:text="${raakaaine.nimi}"></span><a th:href="${'/lisays_raakaaine/'+raakaaine.id}"> [delete]</a>
             </li>
         </ol>
         

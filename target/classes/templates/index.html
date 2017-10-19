@@ -4,22 +4,22 @@
 
     <head>
         <title>Smoothie Mestarit</title>
-        <meta charset="ISO-8859-1" />
+        <meta charset="UTF-8" />
     </head>
 
     <body>
         
         <nav>
-            <a href="/"> Etusivu</a>
-            <a href="/lisays"> Smoothie Manageri</a>
-            <a href="/lisays_raakaaine"> Raakaaine Manageri</a>
+            <a href="/"> Frontpage</a>
+            <a href="/lisays"> Smoothie manager</a>
+            <a href="/lisays_raakaaine"> Ingredient manager</a>
         </nav>
 	
         <h1>Smooth as Smoothie</h1>
         
-        <p>Hei! Me olemme smooth as smoothie super smoothie masterit! Tämä on meidän smoothie sivumme!</p>
+        <p>Hey! We are smooth as smoothie super smoothie masters! This is our smoothie page!</p>
         
-        <h2>Smoothie listaus</h2>
+        <h2>List of our smoothies, click for recipe</h2>
         <ol>
             <li th:each="smoothie : ${smoothiet}">
                  <a th:href="${'/smoothie/'+smoothie.id}"><span th:text="${smoothie.nimi}"></span></a>

@@ -4,27 +4,27 @@
 
     <head>
         <title>Smoothie</title>
-        <meta charset="ISO-8859-1" />
+        <meta charset="UTF-8" />
     </head>
 
     <body>
 
         <nav>
-            <a href="/"> Etusivu</a>
-            <a href="/lisays"> Smoothie Manageri</a>
-            <a href="/lisays_raakaaine"> Raakaaine Manageri</a>
+            <a href="/"> Frontpage</a>
+            <a href="/lisays"> Smoothie manager</a>
+            <a href="/lisays_raakaaine"> Ingredient manager</a>
         </nav>
 
         <h1><span th:text="${smoothie.nimi}">Smoothie</span>!</h1>
 
-        <h2>Raakaaineet</h2>
+        <h2>Ingredients</h2>
 
         <ol>
             <li th:each="raakaaine : ${smoothie.raakaaineet}">
                 <a th:text="${raakaaine.nimi}"></a>
                 <a>,</a>
                 <a th:text="${raakaaine.maara}"></a>
-                <a>kpl,</a>
+                <a>units,</a>
                 <a th:text="${raakaaine.ohje}"></a>
             </li>
         </ol>
