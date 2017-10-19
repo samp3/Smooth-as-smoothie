@@ -9,8 +9,13 @@
     <body>
         <h1>Smooth as Smoothie</h1>
         
-        
-        
         <p><a href="/lisays">Siirry smoothie lisäykseen.</a></p>
+        
+        <ol>
+            <li th:each="smoothie : ${smoothiet}">
+                <b><span th:text="${smoothie.nimi}">Smoothien nimi</span></b>
+            </li>
+        </ol>
+        
     </body>
 </html>

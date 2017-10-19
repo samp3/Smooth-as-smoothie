@@ -52,19 +52,19 @@ public class SmoothieDao implements Dao<Smoothie, Integer> {
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Annos");
 
         ResultSet rs = stmt.executeQuery();
-        List<Smoothie> opiskelijat = new ArrayList<>();
+        List<Smoothie> smoothiet = new ArrayList<>();
         while (rs.next()) {
             Integer id = rs.getInt("id");
             String nimi = rs.getString("nimi");
 
-            opiskelijat.add(new Smoothie(id, nimi));
+            smoothiet.add(new Smoothie(id, nimi));
         }
 
         rs.close();
         stmt.close();
         connection.close();
 
-        return opiskelijat;
+        return smoothiet;
     }
     
     private int getCount() throws SQLException{
