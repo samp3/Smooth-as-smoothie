@@ -23,6 +23,12 @@
             <input type="submit" value="Lisää raaka-aine"/>
         </form>
         
+        <h3>Testi poistopainike</h3>
+        
+        <form method="POST" action="/remover/0">
+            <input type="submit" value="[poista nollas raaka-aine]"/>
+        </form>
+        
         <h2>Raakaaineet</h2>
         <ol>
             <li th:each="raakaaine : ${raakaaineet}">

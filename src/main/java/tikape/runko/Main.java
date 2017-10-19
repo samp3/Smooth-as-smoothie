@@ -69,5 +69,19 @@ public class Main {
             res.redirect("/lisays_raakaaine");
             return "";
         });
+        
+        Spark.post("/remover/:poisto", (req, res) -> {
+            int poistetaan = Integer.parseInt(req.params("poisto"));  // tähän että monesko indeksi poistetaan
+            raakaaineDao.delete(poistetaan);
+            res.redirect("/lisays_raakaaine");
+            return "";
+        });
+        
+        Spark.post("/removes/:poisto", (req, res) -> {
+            int poistetaan = Integer.parseInt(req.params("poisto"));  // tähän että monesko indeksi poistetaan
+            smoothieDao.delete(poistetaan);
+            res.redirect("/lisays");
+            return "";
+        });
     }
 }
