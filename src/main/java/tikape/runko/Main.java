@@ -24,12 +24,16 @@ public class Main {
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("smoothiet", smoothieDao.findAll());
-            
+            map.put("raakaaineet", raakaaineDao.findAll());
+
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
+        
+
 
         get("/lisays", (req, res) -> {
             HashMap map = new HashMap<>();
+            map.put("smoothiet", smoothieDao.findAll());
 
             return new ModelAndView(map, "lisays");
         }, new ThymeleafTemplateEngine());
@@ -52,11 +56,12 @@ public class Main {
                 
         get("/lisays_raakaaine", (req, res) -> {
             HashMap map = new HashMap<>();
+            map.put("raakaaineet", raakaaineDao.findAll());
 
             return new ModelAndView(map, "lisays_raakaaine");
         }, new ThymeleafTemplateEngine());
 
-        Spark.post("/lisays_raakaaine", (req, res) -> {
+        Spark.post("/l_raakaaine", (req, res) -> {
             String nimi = req.queryParams("nimi");
             raakaaineDao.insert(nimi);
             res.redirect("/lisays_raakaaine");
