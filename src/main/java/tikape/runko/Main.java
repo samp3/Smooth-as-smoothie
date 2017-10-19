@@ -80,12 +80,12 @@ public class Main {
             return new ModelAndView(map, "lisays_raakaaine");
         }, new ThymeleafTemplateEngine());
         
-        Spark.post("/lisays/:id", (req, res) -> {
+        get("/lisays/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             smoothieDao.delete(Integer.parseInt(req.params("id")));
             map.put("smoothiet", smoothieDao.findAll());
-
+            
             return new ModelAndView(map, "lisays");
-        });
+        }, new ThymeleafTemplateEngine());
     }
 }
