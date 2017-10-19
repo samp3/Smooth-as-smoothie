@@ -27,6 +27,13 @@
             <input type="text" name="nimi"/><br/>
             <input type="submit" value="Lisää smoothie"/>
         </form>
+        
+        <h2>Smoothiet</h2>
+        <ol>
+            <li th:each="smoothie : ${smoothiet}">
+                 <a th:href="${'/smoothie/'+smoothie.id}"><span th:text="${smoothie.nimi}"></span></a>
+            </li>
+        </ol>
 
 
         

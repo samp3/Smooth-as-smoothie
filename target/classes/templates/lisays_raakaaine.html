@@ -9,11 +9,18 @@
     <body>
         <h1>Lisää raaka-aine</h1>
         
-        <form method="POST" action="/lisays_raakaaine">
+        <form method="POST" action="/l_raakaaine">
             Nimi:<br/>
             <input type="text" name="nimi"/><br/>
             <input type="submit" value="Lisää raaka-aine"/>
         </form>
+        
+        <h2>Raakaaineet</h2>
+        <ol>
+            <li th:each="raakaaine : ${raakaaineet}">
+                 <a th:href="${'/raakaaine/'+raakaaine.id}"><span th:text="${raakaaine.nimi}"></span></a>
+            </li>
+        </ol>
         
         <p><a href="/">Etusivulle</a></p>
         
